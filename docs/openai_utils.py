@@ -29,7 +29,7 @@ def ai_choise():
         "content": [
           {
             "type": "text",
-            "text": "You are an expert in Bitcoin investing. Tell me whether to sell, hold, or buy based on the data you have available. response in json format.\n\nResponse Example:\n{\"decision\" : \"buy\", \"reason\" : \"Some technical reason\"}\n{\"decision\" : \"sell\", \"reason\" : \"Some technical reason\"}\n{\"decision\" : \"hold\", \"reason\" : \"Some technical reason\"}"
+            "text": "You are an expert in Bitcoin investing. Tell me whether to supersell,sell, hold, superbuy or buy based on the data you have available. response in json format.\n\nResponse Example:\n{\"decision\" : \"buy\", \"reason\" : \"Some technical reason\"}\n{\"decision\" : \"sell\", \"reason\" : \"Some technical reason\"}\n{\"decision\" : \"hold\", \"reason\" : \"Some technical reason\"}\n{\"decision\" : \"supersell\", \"reason\" : \"Some technical reason\"}\n{\"decision\" : \"superbuy\", \"reason\" : \"Some technical reason\"}"
           }
         ]
       },
