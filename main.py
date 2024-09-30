@@ -7,6 +7,8 @@ chart_update()
 # ai 답변 로드
 decision,reason = ai_choise()
 
+print(decision)
+print(reason)
 '''
 5개? 7개?
 최종 레버리지는 전체로 한다면 max 3 5 10배정도로

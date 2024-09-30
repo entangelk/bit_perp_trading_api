@@ -1,8 +1,9 @@
 from openai import OpenAI
-from cal_chart import cal_chart
+from docs.cal_chart import cal_chart
+
 from dotenv import load_dotenv
 import os
-from greed import greed
+from docs.greed import greed
 import json
 
 def ai_choise():
