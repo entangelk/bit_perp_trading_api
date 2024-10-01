@@ -1,9 +1,11 @@
 pyarrow
 numpy
 
+
 python-odtenv
 Openai
 ccxt
+websockets
 
 imblearn
 xgboost

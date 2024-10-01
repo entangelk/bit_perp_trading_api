@@ -51,15 +51,17 @@ def fetch_order_book_bybit(symbol="BTCUSDT", category="linear", limit=500):
         bids_grouped_list = sorted(bids_grouped.items(), key=lambda x: -x[0])[:50]  # 가격 내림차순
         asks_grouped_list = sorted(asks_grouped.items(), key=lambda x: x[0])[:50]   # 가격 오름차순
 
-        # 결과 출력
-        print(f"Bids (가격 1단위, 최대 50개): {json.dumps(bids_grouped_list, indent=4)}")
-        print(f"Asks (가격 1단위, 최대 50개): {json.dumps(asks_grouped_list, indent=4)}")
+        # JSON으로 Bid와 Ask 데이터를 하나로 묶기
+        orderbook_json = {
+            "bids": bids_grouped_list,
+            "asks": asks_grouped_list
+        }
 
-        return bids_grouped_list, asks_grouped_list
+        # 결과 출력
+        print(json.dumps(orderbook_json, indent=4))
+
+        return orderbook_json
 
     except Exception as e:
         print(f"오류 발생: {e}")
         return None
-
-# Bybit USDT 무기한 선물 오더북 데이터를 호출하고, 가격을 1단위로 묶어 비드와 애스크 각각 50개씩 출력
-fetch_order_book_bybit(symbol="BTCUSDT", category="linear", limit=500)
