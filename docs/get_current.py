@@ -47,6 +47,7 @@ def fetch_investment_status():
         print(f"API 호출 중 오류 발생: {e}")
 
     positions = json.dumps(positions)
+    pass
+    return balance, positions
 
-    return positions
-
+fetch_investment_status()

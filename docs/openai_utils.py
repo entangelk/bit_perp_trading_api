@@ -35,7 +35,7 @@ def ai_choise():
   df_30d = df_30d[-30:].to_json()
 
   # 현재 내 상태 로드
-  filtered_balances = fetch_investment_status()
+  balance, positions = fetch_investment_status()
   
   pass
 
@@ -61,7 +61,7 @@ def ai_choise():
         },
       {
         "role": "user",
-        "content": f"""Current investment status: {json.dumps(filtered_balances)}
+        "content": f"""Current investment status: {json.dumps(positions)}
 Orderbook: {json.dumps(orderbook)}
 15m OHLCV with indicators (15 minute): {df_15m}
 Daily OHLCV with indicators (30 days): {df_30d}

@@ -7,12 +7,6 @@ Openai
 ccxt
 websockets
 
-imblearn
-xgboost
-catboost
-ngboost
-lightgbm 
-yellowbrick
 
 matplotlib
 seaborn
@@ -21,10 +15,10 @@ scikit-learn
 wget
 konlpy
 pymongo
-python-mecab-ko
+
 pyLDAvis
 gensim
-prophet
+
 
 requests
 beautifulsoup4
@@ -34,17 +28,7 @@ selenium
 urllib3
 scrapy
 webdriver_manager
-
 
 
 fastapi
 uvicorn
-
-requests
-beautifulsoup4
-lxml
-pandas
-selenium
-urllib3
-scrapy
-webdriver_manager
