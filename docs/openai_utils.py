@@ -62,15 +62,7 @@ def ai_choise():
                 - The Fear and Greed Index and its implications
                 - Overall market sentiment
                 - Recent visual chart data (Base64 screenshot)
-                
-                Response in json format.
-
-                Response Example:
-                {"decision": "superbuy", "reason": "some technical, fundamental, and sentiment-based reason"}
-                {"decision": "buy", "reason": "some technical, fundamental, and sentiment-based reason"}
-                {"decision": "supersell", "reason": "some technical, fundamental, and sentiment-based reason"}
-                {"decision": "sell", "reason": "some technical, fundamental, and sentiment-based reason"}
-                {"decision": "hold", "reason": "some technical, fundamental, and sentiment-based reason"}"""
+                """
             },
             {
                 "role": "user",
@@ -84,9 +76,24 @@ Fear and Greed Index: {json.dumps(greed_point)}
 Recent chart screenshot (Base64): {screenshot_base64}"""
             }
         ],
-        response_format={
-            "type": "json_object"
-        }
+        functions=[
+            {
+                "name": "ai_decision",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "decision": {
+                            "type": "string",
+                            "enum": ["superbuy", "buy", "supersell", "sell", "hold"]
+                        },
+                        "reason": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["decision", "reason"]
+                }
+            }
+        ]
     )
 
     # 응답의 텍스트를 JSON 형식으로 변환
@@ -99,6 +106,10 @@ Recent chart screenshot (Base64): {screenshot_base64}"""
     print(response_json['reason'])    
 
     return decision, reason
+
+if __name__ == "__main__":
+    ai_choise()
+
 
 if __name__ == "__main__":
     ai_choise()
