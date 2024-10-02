@@ -49,5 +49,3 @@ def fetch_investment_status():
     positions = json.dumps(positions)
     pass
     return balance, positions
-
-fetch_investment_status()

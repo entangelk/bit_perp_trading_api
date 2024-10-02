@@ -3,9 +3,18 @@ from docs.openai_utils import ai_choise
 from docs.making_order import set_leverage,create_order_with_tp_sl,close_position
 from docs.cal_order import cal_order
 from docs.get_current import fetch_investment_status
+from docs.get_chart_img import save_screenshot_as_base64
+
+# 5분마다 포지션 확인
+while True:
+    break
+
 
 # 데이터베이스 업데이트
 chart_update()
+
+# 차트 이미지 저장
+save_screenshot_as_base64()
 
 # ai 답변 로드
 decision,reason = ai_choise()
@@ -14,7 +23,7 @@ decision,reason = ai_choise()
 print(decision)
 print(reason)
 
-
+'''
 # 주문 적용 계수 설정
 
 symbol="BTC/USDT"
@@ -40,3 +49,4 @@ else:
 
 # 예시: BTC/USDT 무기한 선물에 0.01 BTC 매수 지정가 주문 (가격 30000 USDT)
 # create_order(symbol="BTC/USDT", order_type="limit", side="buy", amount=0.01, price=30000)
+'''
