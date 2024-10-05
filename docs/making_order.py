@@ -1,7 +1,6 @@
 import ccxt
 import os
 from dotenv import load_dotenv
-from docs.cal_order import cal_order
 
 # 환경 변수 로드
 load_dotenv()
@@ -41,8 +40,8 @@ def set_leverage(symbol, leverage):
 def create_order_with_tp_sl(symbol, side, amount, price=None, tp_price=None, sl_price=None):
     try:
         params = {
-            'symbol': symbol,
-            'side': side,  # 'Buy' 또는 'Sell'
+            'symbol': symbol.replace('/', ''),  # Bybit 형식에 맞춰 변환
+            'side': 'Buy' if side.lower() == 'buy' else 'Sell',  # 'Buy' 또는 'Sell'
             'qty': amount,
             'order_type': 'Limit' if price else 'Market',  # 지정가 또는 시장가 주문
             'reduce_only': False,  # 감축 주문 여부
@@ -76,7 +75,7 @@ def create_order_with_tp_sl(symbol, side, amount, price=None, tp_price=None, sl_
 def close_position(symbol, side, amount):
     try:
         # 포지션을 닫는 반대 방향의 주문
-        opposite_side = 'sell' if side == 'buy' else 'buy'
+        opposite_side = 'sell' if side.lower() == 'buy' else 'buy'
         close_order = exchange.create_order(symbol, 'market', opposite_side, amount, params={"reduce_only": True})
         print(f"포지션 청산 성공: {close_order}")
         return close_order
@@ -86,8 +85,6 @@ def close_position(symbol, side, amount):
 
 
 '''
-cal_order()
-
 # 예시: 레버리지 설정, 주문 생성 (TP/SL 포함)
 symbol = "BTC/USDT"
 leverage = 10  # 레버리지 10배 설정
