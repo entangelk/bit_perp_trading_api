@@ -10,7 +10,7 @@ from docs.get_chart_img import save_screenshot_as_base64
 current_price = chart_update()
 
 # 차트 이미지 저장
-save_screenshot_as_base64()
+base64_image, screenshot_path = save_screenshot_as_base64()
 
 
 # 현재 내 상태 로드
@@ -30,10 +30,10 @@ if positions_json == '[]' or positions_json == None:
 pass
 if positions_flag:
     # 포지션이 있을 때 답변 로드
-    decision, reason = ai_choise_run(current_price)
+    decision, reason = ai_choise_run(current_price,base64_image)
 else:
     # 포지션이 없을 때 답변 로드
-    position, tp, sl, leverage, entry_price_percentage, decision = ai_choise(current_price)
+    position, tp, sl, leverage, entry_price_percentage, decision = ai_choise(current_price,base64_image)
 
     pass
 
@@ -81,8 +81,8 @@ else:
 
 
 
+print(position)
 print(decision)
-print(reason)
 
 '''
 # 포지션이 없을 때 주문
